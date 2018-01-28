@@ -20,6 +20,8 @@ public class HuntingBehaviour : MonoBehaviour {
 	public bool inDetectRange = false;
 	public bool inAttackRange = false;
 
+	private Vector3 wanderVector;
+
 	Rigidbody rb;
 
 	void Start () {
@@ -27,6 +29,9 @@ public class HuntingBehaviour : MonoBehaviour {
 		rb = GetComponent<Rigidbody>();
 		jump = new Vector3(0.0f, 2.0f, 0.0f);
 		attackCounter = attackSpeed;
+
+		wanderVector = Vector3.forward;
+		wanderVector = Quaternion.Euler(Random.Range(0,360), 0, 0) * wanderVector;
 	}
 	
 	// Update is called once per frame
@@ -69,7 +74,13 @@ public class HuntingBehaviour : MonoBehaviour {
 				rb.AddForce(jump * jumpForce, ForceMode.Impulse);
 				timeCounter = 0;
 				// rigidbody.AddForce (up * 5, ForceMode.Impulse);
+
+				wanderVector = Vector3.forward;
+				wanderVector = Quaternion.Euler(Random.Range(0,360), 0, 0) * wanderVector;
+
 			}
+
+			transform.position += (wanderVector * step / 2);
 		}
 	}
 
