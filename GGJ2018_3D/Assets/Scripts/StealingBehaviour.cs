@@ -29,10 +29,17 @@ public class StealingBehaviour : MonoBehaviour {
 		float step = enemySpeed * (Time.deltaTime * (enemySpeed*2));
 
 		if(hasCollectable) {
-			
+			string[] tags = {"Collectable", "Junk"};
 
-			var collectables = GameObject.FindGameObjectsWithTag("Collectable");
-			var closestCollectable = collectables.OrderBy(collectable => Vector3.Distance(transform.position, collectable.transform.position)).FirstOrDefault();
+			var combinedList = new List<GameObject>();
+
+			GameObject[] collectables = GameObject.FindGameObjectsWithTag("Collectable");
+			GameObject[] junks = GameObject.FindGameObjectsWithTag("Junk");
+			
+			combinedList.AddRange(collectables);
+			combinedList.AddRange(junks);
+
+			var closestCollectable = combinedList.OrderBy(collectable => Vector3.Distance(transform.position, collectable.transform.position)).FirstOrDefault();
 
 			float distance = Vector3.Distance(closestCollectable.transform.position, transform.position);
 
@@ -53,8 +60,14 @@ public class StealingBehaviour : MonoBehaviour {
 			}
 
 		} else {			
-			var collectables = GameObject.FindGameObjectsWithTag("Collectable");
-			var closestCollectable = collectables.OrderBy(collectable => Vector3.Distance(transform.position, collectable.transform.position)).FirstOrDefault();
+			var combinedList = new List<GameObject>();
+			GameObject[] collectables = GameObject.FindGameObjectsWithTag("Collectable");
+			GameObject[] junks = GameObject.FindGameObjectsWithTag("Junk");
+			
+			combinedList.AddRange(collectables);
+			combinedList.AddRange(junks);
+
+			var closestCollectable = combinedList.OrderBy(collectable => Vector3.Distance(transform.position, collectable.transform.position)).FirstOrDefault();
 			transform.position = Vector3.MoveTowards (transform.position, closestCollectable.transform.position, step);
 
 			float distance = Vector3.Distance(closestCollectable.transform.position, transform.position);
