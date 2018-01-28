@@ -12,6 +12,7 @@ public class HelmetController : MonoBehaviour {
 
 	public bool helmetOn;
 
+	public Animator animator;
 	// Use this for initialization
 	void Start () {
 		helmetOn = false;
@@ -21,7 +22,7 @@ public class HelmetController : MonoBehaviour {
 	void Update () {
 		if(Input.GetButtonDown("Fire1"))
 		{
-			Debug.Log("Pressed fire");
+			//Debug.Log("Pressed fire");
 
 			helmetOn = !helmetOn;
 
@@ -29,11 +30,24 @@ public class HelmetController : MonoBehaviour {
 			{
 				mainCamera.GetComponent<Camera>().cullingMask |= (1 << 8);
 				spriteRenderer.sprite = spriteMode2;
+
+				animator.SetBool("glowing", true);
+				AnimatorStateInfo animationState = animator.GetCurrentAnimatorStateInfo(0);        	
+				if (animationState.IsName("walkAnim")) {
+					var fadeTime = (animationState.normalizedTime % 1);
+					animator.CrossFade("GlowWalk", 0f, 0, fadeTime);
+				}
 			}
 			else
 			{
 				mainCamera.GetComponent<Camera>().cullingMask &= ~(1 << 8);
 				spriteRenderer.sprite = spriteMode1;
+				animator.SetBool("glowing", false);
+				AnimatorStateInfo animationState = animator.GetCurrentAnimatorStateInfo(0);
+				if (animationState.IsName("GlowWalk")) {
+					var fadeTime = (animationState.normalizedTime % 1);
+					animator.CrossFade("walkAnim", 0f, 0, fadeTime);
+				}
 			}
 		}
 
