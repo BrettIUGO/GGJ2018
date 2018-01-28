@@ -5,6 +5,8 @@ using UnityEngine;
 public class MovementController : MonoBehaviour {
 
 	float rotateSpeed = 7.5f;
+	public float movementModifier = .15f;
+	public float defaultMovementModifier = .15f;
 
 	float x;
 	float z;
@@ -19,8 +21,8 @@ public class MovementController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		x = Input.GetAxis ("Horizontal") * 0.15f;
-		z = Input.GetAxis ("Vertical") * 0.15f;
+		x = Input.GetAxis ("Horizontal") * movementModifier;
+		z = Input.GetAxis ("Vertical") * movementModifier;
 		rx = Input.GetAxis ("JoyR X");
 
 		if(x != 0f || z != 0f) {
