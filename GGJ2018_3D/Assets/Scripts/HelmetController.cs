@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class HelmetController : MonoBehaviour {
 
+	public GameObject mainCamera;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -11,6 +13,12 @@ public class HelmetController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if(Input.GetButtonDown("Fire1"))
+		{
+			Debug.Log("Pressed fire");
+
+			mainCamera.GetComponent<Camera>().cullingMask ^= (1 << 8);
+		}
+
 	}
 }
