@@ -650,7 +650,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 77d6ea14dcb0e3045a0d08f65982931a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 34fc9fe123be649998eddddfab2c1005, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -700,6 +700,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 2123603310}
+  spriteMode1: {fileID: 21300000, guid: 34fc9fe123be649998eddddfab2c1005, type: 3}
+  spriteMode2: {fileID: 21300000, guid: 51cd407cf9d27427ea7d82fe176eaead, type: 3}
+  helmetOn: 0
 --- !u!1 &905030367
 GameObject:
   m_ObjectHideFlags: 0
@@ -1418,7 +1421,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4294967039
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0

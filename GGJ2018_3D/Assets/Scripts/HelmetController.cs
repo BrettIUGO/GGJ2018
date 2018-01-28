@@ -6,9 +6,14 @@ public class HelmetController : MonoBehaviour {
 
 	public GameObject mainCamera;
 
+	public Sprite spriteMode1;
+	public Sprite spriteMode2;
+
+	public bool helmetOn;
+
 	// Use this for initialization
 	void Start () {
-		
+		helmetOn = false;
 	}
 	
 	// Update is called once per frame
@@ -17,7 +22,18 @@ public class HelmetController : MonoBehaviour {
 		{
 			Debug.Log("Pressed fire");
 
-			mainCamera.GetComponent<Camera>().cullingMask ^= (1 << 8);
+			helmetOn = !helmetOn;
+
+			if(helmetOn)
+			{
+				mainCamera.GetComponent<Camera>().cullingMask |= (1 << 8);
+				GetComponent<SpriteRenderer>().sprite = spriteMode2;
+			}
+			else
+			{
+				mainCamera.GetComponent<Camera>().cullingMask &= ~(1 << 8);
+				GetComponent<SpriteRenderer>().sprite = spriteMode1;
+			}
 		}
 
 	}
