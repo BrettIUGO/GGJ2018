@@ -10,7 +10,7 @@ public class HitController : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
 		healthSlider = GameObject.Find("HealthSlider");
-		healthSlider.GetComponent<Slider>().value = 50;
+		healthSlider.GetComponent<Slider>().value = 100;
 	}
 	
 	// Update is called once per frame
