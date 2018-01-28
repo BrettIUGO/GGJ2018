@@ -1,11 +1,14 @@
 fileFormatVersion: 2
 guid: a70b965067789be4bb8f8e45d316f647
-timeCreated: 1517110438
+timeCreated: 1517182456
 licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - deathScreen: {fileID: 1180350028542866, guid: bbd0fcc9433fdf441a244c8e12f3791e,
+      type: 2}
+  - DeathSound: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

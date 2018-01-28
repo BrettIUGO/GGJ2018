@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class HitController : MonoBehaviour {
 
 	GameObject healthSlider;
+	public GameObject deathScreen;
+	public GameObject hudCanvas;
 
   public AudioClip[] InjurySounds;
   public AudioClip DeathSound;
@@ -30,10 +32,14 @@ public class HitController : MonoBehaviour {
       if (PlayerStats.health > 0)
       {
         soundInstance.RandomizeSfx(soundInstance.FXSource, InjurySounds);
+
       }
       else
       {
         soundInstance.PlaySingle(soundInstance.FXSource, DeathSound);
+			Instantiate(deathScreen, hudCanvas.transform);
+
+
         //MIKE TODO: trigger game over state here!
       }
 
