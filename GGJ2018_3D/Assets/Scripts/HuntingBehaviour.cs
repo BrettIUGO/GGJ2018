@@ -9,7 +9,7 @@ public class HuntingBehaviour : MonoBehaviour {
 	public Animator animator;
 	public float enemySpeed = 5;
 	float timeCounter = 0;
-
+  public AudioClip[] AttackSounds;
 	public Vector3 jump;
 	public float jumpForce = 2.0f;
 
@@ -29,13 +29,18 @@ public class HuntingBehaviour : MonoBehaviour {
 		timeCounter++;
 		Transform target = player.transform;
 		float step = enemySpeed * (Time.deltaTime * (enemySpeed*2));
+
 		//float distance = Vector3.Distance (transform.position, target.position);
+
+    var soundInstance = SoundManager.instance;
+
 		//Debug.Log("enemy distance: " + distance);
 		if (inDetectRange) {
 			if(!inAttackRange)
 				transform.position = Vector3.MoveTowards (transform.position, target.position, step);
 			
 			animator.SetBool("attacking", true);
+      soundInstance.RandomizeSfx(soundInstance.AttackSounds, AttackSounds, 1);
 		}
 		else
 		{

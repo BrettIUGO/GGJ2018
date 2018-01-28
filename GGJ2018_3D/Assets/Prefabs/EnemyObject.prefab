@@ -215,6 +215,8 @@ MonoBehaviour:
   player: {fileID: 0}
   animator: {fileID: 95596704637474992}
   enemySpeed: 2
+  AttackSounds:
+  - {fileID: 8300000, guid: eec077e947579764989f277ba6964b70, type: 3}
   jump: {x: 0, y: 0, z: 0}
   jumpForce: 2
   inDetectRange: 0

@@ -27,13 +27,15 @@ public class HitController : MonoBehaviour {
     {
       PlayerStats.health -= 10;
 
+      var soundInstance = SoundManager.instance;
+
       if (PlayerStats.health > 0)
       {
-        SoundManager.instance.RandomizeSfx(InjurySounds);
+        soundInstance.RandomizeSfx(soundInstance.FXSource, InjurySounds);
       }
       else
       {
-        SoundManager.instance.PlaySingle(DeathSound);
+        soundInstance.PlaySingle(soundInstance.FXSource, DeathSound);
         //MIKE TODO: trigger game over state here!
       }
 
