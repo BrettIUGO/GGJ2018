@@ -4,3 +4,6 @@ Library/
 .vscode
 *.csproj
 obj/
+*.csproj
+*.sln
+
