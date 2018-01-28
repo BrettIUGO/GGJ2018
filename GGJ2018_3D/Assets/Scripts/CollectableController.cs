@@ -26,14 +26,16 @@ public class CollectableController : MonoBehaviour {
 		//collectStartTime = Time.time;
 	}
 
-	void OnTriggerStay () {
-		collectDuration += Time.deltaTime;
-		print(collectDuration);
-		if(collectDuration > collectTime) {
-			Collect();
-			collectDuration = 0f;
-		}
+	void OnTriggerStay (Collider collision) {
+		if(collision.tag == "Player") {
 
+			collectDuration += Time.deltaTime;
+			print(collectDuration);
+			if(collectDuration > collectTime) {
+				Collect();
+				collectDuration = 0f;
+			}
+		}
 	}
 
 	void OnTriggerExit(){
