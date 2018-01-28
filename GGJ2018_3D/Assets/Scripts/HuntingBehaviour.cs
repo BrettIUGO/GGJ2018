@@ -43,26 +43,27 @@ public class HuntingBehaviour : MonoBehaviour {
 		if (inDetectRange) {
 			if(inAttackRange)
 			{
+				animator.SetBool("attacking", true);
+
 				attackCounter -= Time.deltaTime;
 				if(attackCounter <= 0)
 				{
+					soundInstance.RandomizeSfx(soundInstance.AttackSounds, AttackSounds, 1);
 					player.GetComponent<HitController>().takeHit();
 					attackCounter = attackSpeed;
 				}
 			}
 			else
 			{
+				animator.SetBool("attacking", false);
+
 				transform.position = Vector3.MoveTowards (transform.position, target.position, step);
 				attackCounter = attackSpeed;
 			}
 			
-			animator.SetBool("attacking", true);
-      soundInstance.RandomizeSfx(soundInstance.AttackSounds, AttackSounds, 1);
 		}
 		else
 		{
-			animator.SetBool("attacking", false);
-
 			if(timeCounter > 100)
 			{
 				rb.AddForce(jump * jumpForce, ForceMode.Impulse);
