@@ -20,11 +20,16 @@ public class StealingBehaviour : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		Transform target = player.transform;
+		if (Vector3.Distance(transform.position, target.position) > 100f) {
+			return;
+		}
+
 
 		float step = enemySpeed * (Time.deltaTime * (enemySpeed*2));
 
 		if(hasCollectable) {
-			Transform target = player.transform;
+			
 
 			var collectables = GameObject.FindGameObjectsWithTag("Collectable");
 			var closestCollectable = collectables.OrderBy(collectable => Vector3.Distance(transform.position, collectable.transform.position)).FirstOrDefault();
