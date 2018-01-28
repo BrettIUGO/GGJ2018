@@ -113,6 +113,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   enemySpeed: 2
+  jump: {x: 0, y: 0, z: 0}
+  jumpForce: 2
 --- !u!135 &135424558424714748
 SphereCollider:
   m_ObjectHideFlags: 1
