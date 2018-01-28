@@ -26,7 +26,7 @@ public class HuntingBehaviour : MonoBehaviour {
 		Transform target = player.transform;
 		float step = enemySpeed * (Time.deltaTime * (enemySpeed*2));
 		float distance = Vector3.Distance (transform.position, target.position);
-		Debug.Log("enemy distance: " + distance);
+		//Debug.Log("enemy distance: " + distance);
 		if (distance < 30) {
 			transform.position = Vector3.MoveTowards (transform.position, target.position, step);
 		} else if(timeCounter > 100){
