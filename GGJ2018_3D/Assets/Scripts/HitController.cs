@@ -7,6 +7,8 @@ public class HitController : MonoBehaviour {
 
 	GameObject healthSlider;
 
+  public AudioClip[] InjurySounds;
+
 	// Use this for initialization
 	void Awake () {
 		healthSlider = GameObject.Find("HealthSlider");
@@ -22,6 +24,7 @@ public class HitController : MonoBehaviour {
 		if(collision.gameObject.tag == "Enemy") {
 			PlayerStats.health -= 10;
 
+      SoundManager.instance.RandomizeSfx(InjurySounds);
 			
 			healthSlider.GetComponent<Slider>().value = PlayerStats.health;
 		}

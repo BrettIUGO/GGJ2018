@@ -23,9 +23,20 @@ public class SoundManager : MonoBehaviour
     DontDestroyOnLoad(gameObject);
   }
 
+  public void RandomizeSfx(params AudioClip[] clips)
+  {
+    int randomIndex = Random.Range(0, clips.Length);
+    FXSource.clip = clips[randomIndex];
+    FXSource.Play();
+  }
+
   public void PlaySingle(AudioClip clip)
   {
     FXSource.clip = clip;
-    FXSource.Play();
+
+    if (!FXSource.isPlaying)
+    {
+      FXSource.Play();
+    }
   }
 }
