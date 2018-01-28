@@ -24,9 +24,12 @@ public class HitController : MonoBehaviour {
 		if(collision.gameObject.tag == "Enemy") {
 			PlayerStats.health -= 10;
 
-      SoundManager.instance.RandomizeSfx(InjurySounds);
-			
-			healthSlider.GetComponent<Slider>().value = PlayerStats.health;
+      if (InjurySounds.Length > 0)
+      {
+        SoundManager.instance.RandomizeSfx(InjurySounds);
+      }
+
+      healthSlider.GetComponent<Slider>().value = PlayerStats.health;
 		}
 	}
 }

@@ -27,7 +27,11 @@ public class SoundManager : MonoBehaviour
   {
     int randomIndex = Random.Range(0, clips.Length);
     FXSource.clip = clips[randomIndex];
-    FXSource.Play();
+    
+    if (!FXSource.isPlaying)
+    {
+      FXSource.Play();
+    }
   }
 
   public void PlaySingle(AudioClip clip)
