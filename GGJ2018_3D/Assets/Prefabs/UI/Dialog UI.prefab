@@ -71,6 +71,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224757989731550222}
   - component: {fileID: 114414673787362316}
+  - component: {fileID: 114321911669990634}
   m_Layer: 5
   m_Name: Dialog UI
   m_TagString: Untagged
@@ -97,7 +98,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 0036c29b49dc47f468ee5c197f0ad2ce, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5a82270ca39ef1649ad51033550c9acf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -105,6 +106,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114321911669990634
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1832256870392230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8d6735dfbbd01a4fb62ce850bee2ad8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114414673787362316
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -149,7 +161,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 2
-  m_Text: 'This is placeholder text for the beginning of the game
+  m_Text: 'Captain, your ship are crashed! Collect orbs to transmit story message
+    and avoid thieves
+
+    Best Luck Commander!
 
     (Press Any Key)'
 --- !u!114 &114913713566836366
