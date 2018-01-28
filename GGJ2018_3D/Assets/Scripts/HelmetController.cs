@@ -59,7 +59,7 @@ public class HelmetController : MonoBehaviour {
 			}
 		}
 
-		if(helmetOn) {
+		if(!helmetOn) {
 			//Show slider
 			var collectables = GameObject.FindGameObjectsWithTag("Collectable");
 			var closestCollectable = collectables.OrderBy(collectable => Vector3.Distance(transform.position, collectable.transform.position)).FirstOrDefault();
