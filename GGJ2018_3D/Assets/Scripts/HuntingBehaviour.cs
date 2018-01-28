@@ -8,10 +8,17 @@ public class HuntingBehaviour : MonoBehaviour {
 	public GameObject player;
 	public Animator animator;
 	public float enemySpeed = 5;
-	float timeCounter = 0;
+	public float attackSpeed = 2;
 
+	float timeCounter = 0;
+	float attackCounter;
+
+  public AudioClip[] AttackSounds;
 	public Vector3 jump;
 	public float jumpForce = 2.0f;
+
+	public bool inDetectRange = false;
+	public bool inAttackRange = false;
 
 	Rigidbody rb;
 
@@ -19,6 +26,7 @@ public class HuntingBehaviour : MonoBehaviour {
 		player = GameObject.Find ("PlayerObject");
 		rb = GetComponent<Rigidbody>();
 		jump = new Vector3(0.0f, 2.0f, 0.0f);
+		attackCounter = attackSpeed;
 	}
 	
 	// Update is called once per frame
@@ -26,23 +34,74 @@ public class HuntingBehaviour : MonoBehaviour {
 		timeCounter++;
 		Transform target = player.transform;
 		float step = enemySpeed * (Time.deltaTime * (enemySpeed*2));
-		float distance = Vector3.Distance (transform.position, target.position);
+
+		//float distance = Vector3.Distance (transform.position, target.position);
+
+    var soundInstance = SoundManager.instance;
+
 		//Debug.Log("enemy distance: " + distance);
-		if (distance < 30) {
-			if(distance > 3)
+		if (inDetectRange) {
+			if(inAttackRange)
+			{
+				animator.SetBool("attacking", true);
+
+				attackCounter -= Time.deltaTime;
+				if(attackCounter <= 0)
+				{
+					soundInstance.RandomizeSfx(soundInstance.AttackSounds, AttackSounds, 1);
+					player.GetComponent<HitController>().takeHit();
+					attackCounter = attackSpeed;
+				}
+			}
+			else
+			{
+				animator.SetBool("attacking", false);
+
 				transform.position = Vector3.MoveTowards (transform.position, target.position, step);
-			animator.SetBool("attacking", true);
+				attackCounter = attackSpeed;
+			}
+			
 		}
 		else
 		{
-			animator.SetBool("attacking", false);
-
 			if(timeCounter > 100)
 			{
 				rb.AddForce(jump * jumpForce, ForceMode.Impulse);
 				timeCounter = 0;
 				// rigidbody.AddForce (up * 5, ForceMode.Impulse);
 			}
+		}
+	}
+
+	public void detectTriggerEnter(Collider other)
+	{
+		if(other.gameObject == player)
+		{
+			inDetectRange = true;
+		}
+	}
+
+	public void detectTriggerExit(Collider other)
+	{
+		if(other.gameObject == player)
+		{
+			inDetectRange = false;
+		}
+	}
+
+	public void attackTriggerEnter(Collider other)
+	{
+		if(other.gameObject == player)
+		{
+			inAttackRange = true;
+		}
+	}
+
+	public void attackTriggerExit(Collider other)
+	{
+		if(other.gameObject == player)
+		{
+			inAttackRange = false;
 		}
 	}
 }

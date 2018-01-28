@@ -7,6 +7,11 @@ public class SoundManager : MonoBehaviour
 
   public AudioSource BackgroundMusic;
   public AudioSource FXSource;
+  public AudioSource AttackSounds;
+
+  public float LowPitchRange = .95f;             
+  public float HighPitchRange = 1.05f;            
+
   public static SoundManager instance = null;
 
   void Awake()
@@ -23,29 +28,30 @@ public class SoundManager : MonoBehaviour
     DontDestroyOnLoad(gameObject);
   }
 
-  public void RandomizeSfx(params AudioClip[] clips)
+  public void RandomizeSfx(AudioSource source, AudioClip[] clips, float delay = 0f)
   {
     if (clips.Length == 0)
     {
       return;
     }
 
-    int randomIndex = Random.Range(0, clips.Length);
-    FXSource.clip = clips[randomIndex];
-    
-    if (!FXSource.isPlaying)
+    source.clip = clips[Random.Range(0, clips.Length)];
+
+    source.pitch = Random.Range(LowPitchRange, HighPitchRange); ;
+
+    if (!source.isPlaying)
     {
-      FXSource.Play();
+      source.PlayDelayed(delay);
     }
   }
 
-  public void PlaySingle(AudioClip clip)
+  public void PlaySingle(AudioSource source, AudioClip clip)
   {
-    FXSource.clip = clip;
+    source.clip = clip;
 
-    if (!FXSource.isPlaying)
+    if (!source.isPlaying)
     {
-      FXSource.Play();
+      source.Play();
     }
   }
 }
