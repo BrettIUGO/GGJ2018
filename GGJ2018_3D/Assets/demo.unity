@@ -880,7 +880,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a70b965067789be4bb8f8e45d316f647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InjurySounds: []
+  InjurySounds:
+  - {fileID: 8300000, guid: 8c1a16dd60ad4c241894110dd4928f47, type: 3}
+  - {fileID: 8300000, guid: a729551b55e57e14695ddde2a793f82f, type: 3}
+  - {fileID: 8300000, guid: e545d362b051575429ddeb901ac40887, type: 3}
 --- !u!1 &905030367
 GameObject:
   m_ObjectHideFlags: 0
