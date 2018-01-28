@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using System.Linq;
 
 public class HelmetController : MonoBehaviour {
 
@@ -12,10 +14,16 @@ public class HelmetController : MonoBehaviour {
 
 	public bool helmetOn;
 
+	public float maxDistance = 100f;
+
+	Slider collectSlider;
+
 	public Animator animator;
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		helmetOn = false;
+		collectSlider = GameObject.Find("CollectSlider").GetComponent<Slider>();
+		
 	}
 	
 	// Update is called once per frame
@@ -49,6 +57,17 @@ public class HelmetController : MonoBehaviour {
 					animator.CrossFade("walkAnim", 0f, 0, fadeTime);
 				}
 			}
+		}
+
+		if(helmetOn) {
+			//Show slider
+			var collectables = GameObject.FindGameObjectsWithTag("Collectable");
+			var closestCollectable = collectables.OrderBy(collectable => Vector3.Distance(transform.position, collectable.transform.position)).FirstOrDefault();
+
+			collectSlider.value = Mathf.Lerp(collectSlider.value, maxDistance - Vector3.Distance(closestCollectable.transform.position, transform.position), 0.1f);
+		} else {
+			//Hide slider
+			collectSlider.value = Mathf.Lerp(collectSlider.value, 0f, 0.1f);
 		}
 
 	}
