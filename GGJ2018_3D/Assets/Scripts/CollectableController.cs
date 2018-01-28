@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CollectableController : MonoBehaviour {
 
@@ -12,9 +13,11 @@ public class CollectableController : MonoBehaviour {
 
 	protected float collectDuration = 0f;
 	protected int currentCollects = 0;
+
+	private GameObject coinText;
 	// Use this for initialization
-	void Start () {
-		
+	void Awake () {
+		coinText = GameObject.Find("CoinText");
 	}
 	
 	// Update is called once per frame
@@ -46,6 +49,14 @@ public class CollectableController : MonoBehaviour {
 		currentCollects += 1;
 		print("collected " + amount + " " + itemType);
 		PlayerStats.metal += amount;
+		PlayerStats.increaseCollectable(itemType, amount);
+		//PlayerStats["metal"] += amount;
+
+
+		coinText.GetComponent<Text>().text = (string)PlayerStats.getCollectableCount(itemType).ToString();
+		
+
+
 
 		if(currentCollects >= maxCollects) {
 			Destroy(gameObject);
