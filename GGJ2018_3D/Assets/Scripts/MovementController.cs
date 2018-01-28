@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MovementController : MonoBehaviour {
 
-	float rotateSpeed = 7.5f;
+	public float rotateSpeed = 7.5f;
 	public float movementModifier = .15f;
 	public float defaultMovementModifier = .15f;
 
@@ -34,11 +34,11 @@ public class MovementController : MonoBehaviour {
 		transform.Translate(x, 0, z);
 
 		if (Input.GetKey (KeyCode.Q)) {
-			transform.Rotate (-Vector3.up * rotateSpeed);
+			transform.Rotate (-Vector3.up * rotateSpeed * Time.deltaTime);
 		} else if (Input.GetKey(KeyCode.E)) {
-			transform.Rotate(Vector3.up * rotateSpeed);
+			transform.Rotate(Vector3.up * rotateSpeed * Time.deltaTime);
 		}
 
-		transform.Rotate (new Vector3(0, rx, 0) * rotateSpeed);
+		transform.Rotate (new Vector3(0, rx, 0) * rotateSpeed * Time.deltaTime);
 	}
 }
