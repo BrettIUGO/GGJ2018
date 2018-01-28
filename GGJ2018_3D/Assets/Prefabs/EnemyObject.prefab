@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 114863523048550356}
   - component: {fileID: 95596704637474992}
   m_Layer: 8
-  m_Name: BodySprite
+  m_Name: EnemyBodySprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -129,6 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  animator: {fileID: 95596704637474992}
   enemySpeed: 2
   jump: {x: 0, y: 0, z: 0}
   jumpForce: 2

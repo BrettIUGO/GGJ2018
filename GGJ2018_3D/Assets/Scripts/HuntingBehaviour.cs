@@ -6,6 +6,7 @@ public class HuntingBehaviour : MonoBehaviour {
 
 	// Use this for initialization
 	public GameObject player;
+	public Animator animator;
 	public float enemySpeed = 5;
 	float timeCounter = 0;
 
@@ -29,10 +30,18 @@ public class HuntingBehaviour : MonoBehaviour {
 		//Debug.Log("enemy distance: " + distance);
 		if (distance < 30) {
 			transform.position = Vector3.MoveTowards (transform.position, target.position, step);
-		} else if(timeCounter > 100){
-			rb.AddForce(jump * jumpForce, ForceMode.Impulse);
-			timeCounter = 0;
-			// rigidbody.AddForce (up * 5, ForceMode.Impulse);
+			animator.SetBool("attacking", true);
+		}
+		else
+		{
+			animator.SetBool("attacking", false);
+
+			if(timeCounter > 100)
+			{
+				rb.AddForce(jump * jumpForce, ForceMode.Impulse);
+				timeCounter = 0;
+				// rigidbody.AddForce (up * 5, ForceMode.Impulse);
+			}
 		}
 	}
 }
