@@ -8,7 +8,11 @@ public class HuntingBehaviour : MonoBehaviour {
 	public GameObject player;
 	public Animator animator;
 	public float enemySpeed = 5;
+	public float attackSpeed = 2;
+
 	float timeCounter = 0;
+	float attackCounter;
+
   public AudioClip[] AttackSounds;
 	public Vector3 jump;
 	public float jumpForce = 2.0f;
@@ -22,6 +26,7 @@ public class HuntingBehaviour : MonoBehaviour {
 		player = GameObject.Find ("PlayerObject");
 		rb = GetComponent<Rigidbody>();
 		jump = new Vector3(0.0f, 2.0f, 0.0f);
+		attackCounter = attackSpeed;
 	}
 	
 	// Update is called once per frame
@@ -36,8 +41,20 @@ public class HuntingBehaviour : MonoBehaviour {
 
 		//Debug.Log("enemy distance: " + distance);
 		if (inDetectRange) {
-			if(!inAttackRange)
+			if(inAttackRange)
+			{
+				attackCounter -= Time.deltaTime;
+				if(attackCounter <= 0)
+				{
+					player.GetComponent<HitController>().takeHit();
+					attackCounter = attackSpeed;
+				}
+			}
+			else
+			{
 				transform.position = Vector3.MoveTowards (transform.position, target.position, step);
+				attackCounter = attackSpeed;
+			}
 			
 			animator.SetBool("attacking", true);
       soundInstance.RandomizeSfx(soundInstance.AttackSounds, AttackSounds, 1);

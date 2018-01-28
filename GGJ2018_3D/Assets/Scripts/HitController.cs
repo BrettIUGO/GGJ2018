@@ -21,11 +21,9 @@ public class HitController : MonoBehaviour {
 		
 	}
 
-	void OnCollisionEnter(Collision collision)
+  public void takeHit()
   {
-		if (collision.gameObject.tag == "Enemy")
-    {
-      PlayerStats.health -= 10;
+       PlayerStats.health -= 10;
 
       var soundInstance = SoundManager.instance;
 
@@ -39,9 +37,6 @@ public class HitController : MonoBehaviour {
         //MIKE TODO: trigger game over state here!
       }
 
-
-
       healthSlider.GetComponent<Slider>().value = PlayerStats.health;
-		}
-	}
+  }
 }
