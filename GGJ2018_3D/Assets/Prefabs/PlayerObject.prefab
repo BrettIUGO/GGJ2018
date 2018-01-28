@@ -191,12 +191,10 @@ Animation:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1065384123615252}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations:
-  - {fileID: 7400000, guid: bd7562abc4ea8334d8b15375bef378d2, type: 2}
-  - {fileID: 7400000, guid: 53fe1221abe6fac44801ed85fe1f3752, type: 2}
+  m_Animation: {fileID: 7400000, guid: 53fe1221abe6fac44801ed85fe1f3752, type: 2}
+  m_Animations: []
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -227,6 +225,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8c1a16dd60ad4c241894110dd4928f47, type: 3}
   - {fileID: 8300000, guid: a729551b55e57e14695ddde2a793f82f, type: 3}
   - {fileID: 8300000, guid: e545d362b051575429ddeb901ac40887, type: 3}
+  DeathSound: {fileID: 8300000, guid: 0b22008797d4dad4691652b93e224abd, type: 3}
 --- !u!114 &114552710606834914
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -255,6 +254,8 @@ MonoBehaviour:
   spriteMode1: {fileID: 21300000, guid: 34fc9fe123be649998eddddfab2c1005, type: 3}
   spriteMode2: {fileID: 21300000, guid: 51cd407cf9d27427ea7d82fe176eaead, type: 3}
   helmetOn: 0
+  maxDistance: 100
+  animator: {fileID: 95432847408626220}
 --- !u!114 &114860359719789072
 MonoBehaviour:
   m_ObjectHideFlags: 1
