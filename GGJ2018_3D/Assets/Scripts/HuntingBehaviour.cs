@@ -29,7 +29,8 @@ public class HuntingBehaviour : MonoBehaviour {
 		float distance = Vector3.Distance (transform.position, target.position);
 		//Debug.Log("enemy distance: " + distance);
 		if (distance < 30) {
-			transform.position = Vector3.MoveTowards (transform.position, target.position, step);
+			if(distance > 3)
+				transform.position = Vector3.MoveTowards (transform.position, target.position, step);
 			animator.SetBool("attacking", true);
 		}
 		else
