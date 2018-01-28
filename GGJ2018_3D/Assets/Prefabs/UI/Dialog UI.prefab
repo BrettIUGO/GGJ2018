@@ -161,7 +161,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 2
-  m_Text: 'This is placeholder text for the beginning of the game
+  m_Text: 'Captain, your ship are crashed! Collect orbs to transmit story message
+    and avoid thieves
+
+    Best Luck Commander!
 
     (Press Any Key)'
 --- !u!114 &114913713566836366
