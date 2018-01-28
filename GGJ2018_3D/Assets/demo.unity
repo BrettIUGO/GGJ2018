@@ -419,6 +419,7 @@ Prefab:
     - {fileID: 33861001661515524, guid: ab76c23d2c591e1419af22a80a0eb95d, type: 2}
     - {fileID: 65843781853318682, guid: ab76c23d2c591e1419af22a80a0eb95d, type: 2}
     - {fileID: 23156389185894480, guid: ab76c23d2c591e1419af22a80a0eb95d, type: 2}
+    - {fileID: 114662538399113292, guid: ab76c23d2c591e1419af22a80a0eb95d, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: ab76c23d2c591e1419af22a80a0eb95d, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &796419320 stripped
