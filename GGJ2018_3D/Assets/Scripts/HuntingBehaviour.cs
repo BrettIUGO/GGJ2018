@@ -13,6 +13,9 @@ public class HuntingBehaviour : MonoBehaviour {
 	public Vector3 jump;
 	public float jumpForce = 2.0f;
 
+	public bool inDetectRange = false;
+	public bool inAttackRange = false;
+
 	Rigidbody rb;
 
 	void Start () {
@@ -26,11 +29,12 @@ public class HuntingBehaviour : MonoBehaviour {
 		timeCounter++;
 		Transform target = player.transform;
 		float step = enemySpeed * (Time.deltaTime * (enemySpeed*2));
-		float distance = Vector3.Distance (transform.position, target.position);
+		//float distance = Vector3.Distance (transform.position, target.position);
 		//Debug.Log("enemy distance: " + distance);
-		if (distance < 30) {
-			if(distance > 3)
+		if (inDetectRange) {
+			if(!inAttackRange)
 				transform.position = Vector3.MoveTowards (transform.position, target.position, step);
+			
 			animator.SetBool("attacking", true);
 		}
 		else
@@ -43,6 +47,38 @@ public class HuntingBehaviour : MonoBehaviour {
 				timeCounter = 0;
 				// rigidbody.AddForce (up * 5, ForceMode.Impulse);
 			}
+		}
+	}
+
+	public void detectTriggerEnter(Collider other)
+	{
+		if(other.gameObject == player)
+		{
+			inDetectRange = true;
+		}
+	}
+
+	public void detectTriggerExit(Collider other)
+	{
+		if(other.gameObject == player)
+		{
+			inDetectRange = false;
+		}
+	}
+
+	public void attackTriggerEnter(Collider other)
+	{
+		if(other.gameObject == player)
+		{
+			inAttackRange = true;
+		}
+	}
+
+	public void attackTriggerExit(Collider other)
+	{
+		if(other.gameObject == player)
+		{
+			inAttackRange = false;
 		}
 	}
 }
