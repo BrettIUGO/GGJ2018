@@ -23,9 +23,6 @@ public class MovementController : MonoBehaviour {
 		z = Input.GetAxis ("Vertical") * 0.15f;
 		rx = Input.GetAxis ("JoyR X");
 
-		print(x);
-		print(z);
-
 		if(x != 0f || z != 0f) {
 			animator.SetBool("moving", true);
 		} else {
