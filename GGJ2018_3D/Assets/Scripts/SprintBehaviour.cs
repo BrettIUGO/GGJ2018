@@ -31,12 +31,16 @@ public class SprintBehaviour : MonoBehaviour {
 			}
 		}
 
-		Slider collectSlider = GameObject.Find("SprintSlider").GetComponent<Slider>();
+		var sprintSlider = GameObject.Find ("SprintSlider");
+		if (sprintSlider != null) {
 
-		if (collectSlider != null) {
-			collectSlider.value = sprintEnergy;
-		} else {
-			//Debug.Log ("help");
+			Slider collectSlider = sprintSlider.GetComponent<Slider>();
+
+			if (collectSlider != null) {
+				collectSlider.value = sprintEnergy;
+			} else {
+				//Debug.Log ("help");
+			}
 		}
 	}
 }
