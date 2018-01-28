@@ -18,8 +18,8 @@ public class MovementController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		x = Input.GetAxis ("Horizontal") * 0.25f;
-		z = Input.GetAxis ("Vertical") * 0.5f;
+		x = Input.GetAxis ("Horizontal") * 0.15f;
+		z = Input.GetAxis ("Vertical") * 0.15f;
 		rx = Input.GetAxis ("JoyR X");
 
 		transform.Translate(x, 0, z);
