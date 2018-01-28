@@ -8,6 +8,7 @@ public class HitController : MonoBehaviour {
 	GameObject healthSlider;
 
   public AudioClip[] InjurySounds;
+  public AudioClip DeathSound;
 
 	// Use this for initialization
 	void Awake () {
@@ -20,14 +21,23 @@ public class HitController : MonoBehaviour {
 		
 	}
 
-	void OnCollisionEnter(Collision collision) {
-		if(collision.gameObject.tag == "Enemy") {
-			PlayerStats.health -= 10;
+	void OnCollisionEnter(Collision collision)
+  {
+		if (collision.gameObject.tag == "Enemy")
+    {
+      PlayerStats.health -= 10;
 
-      if (InjurySounds.Length > 0)
+      if (PlayerStats.health > 0)
       {
         SoundManager.instance.RandomizeSfx(InjurySounds);
       }
+      else
+      {
+        SoundManager.instance.PlaySingle(DeathSound);
+        //MIKE TODO: trigger game over state here!
+      }
+
+
 
       healthSlider.GetComponent<Slider>().value = PlayerStats.health;
 		}

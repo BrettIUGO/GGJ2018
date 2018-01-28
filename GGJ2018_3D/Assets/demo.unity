@@ -523,7 +523,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 4fbb05a410dd29c43a4ae1e91595f037, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -884,6 +884,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8c1a16dd60ad4c241894110dd4928f47, type: 3}
   - {fileID: 8300000, guid: a729551b55e57e14695ddde2a793f82f, type: 3}
   - {fileID: 8300000, guid: e545d362b051575429ddeb901ac40887, type: 3}
+  DeathSound: {fileID: 8300000, guid: 0b22008797d4dad4691652b93e224abd, type: 3}
 --- !u!1 &905030367
 GameObject:
   m_ObjectHideFlags: 0

@@ -25,6 +25,11 @@ public class SoundManager : MonoBehaviour
 
   public void RandomizeSfx(params AudioClip[] clips)
   {
+    if (clips.Length == 0)
+    {
+      return;
+    }
+
     int randomIndex = Random.Range(0, clips.Length);
     FXSource.clip = clips[randomIndex];
     
