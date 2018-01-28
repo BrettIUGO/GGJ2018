@@ -6,6 +6,7 @@ public class HelmetController : MonoBehaviour {
 
 	public GameObject mainCamera;
 
+	public SpriteRenderer spriteRenderer;
 	public Sprite spriteMode1;
 	public Sprite spriteMode2;
 
@@ -27,12 +28,12 @@ public class HelmetController : MonoBehaviour {
 			if(helmetOn)
 			{
 				mainCamera.GetComponent<Camera>().cullingMask |= (1 << 8);
-				GetComponent<SpriteRenderer>().sprite = spriteMode2;
+				spriteRenderer.sprite = spriteMode2;
 			}
 			else
 			{
 				mainCamera.GetComponent<Camera>().cullingMask &= ~(1 << 8);
-				GetComponent<SpriteRenderer>().sprite = spriteMode1;
+				spriteRenderer.sprite = spriteMode1;
 			}
 		}
 
