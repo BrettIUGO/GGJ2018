@@ -11,8 +11,9 @@ public class MovementController : MonoBehaviour {
 	float rx;
 	float ry;
 	// Use this for initialization
-	void Start () {
-		
+
+	public Animator animator;
+	void Awake () {
 	}
 	
 	// Update is called once per frame
@@ -22,7 +23,17 @@ public class MovementController : MonoBehaviour {
 		z = Input.GetAxis ("Vertical") * 0.15f;
 		rx = Input.GetAxis ("JoyR X");
 
+		print(x);
+		print(z);
+
+		if(x != 0f || z != 0f) {
+			animator.SetBool("moving", true);
+		} else {
+			animator.SetBool("moving", false);
+		}
+
 		transform.Translate(x, 0, z);
+
 		if (Input.GetKey (KeyCode.Q)) {
 			transform.Rotate (-Vector3.up * rotateSpeed);
 		} else if (Input.GetKey(KeyCode.E)) {
