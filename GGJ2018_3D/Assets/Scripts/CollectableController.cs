@@ -9,12 +9,15 @@ public class CollectableController : MonoBehaviour {
 	public string itemType = "metal";
 	public int maxCollects = 1;
 
+	public GameObject ps;
+
 	public int amount = 1;
 
 	protected float collectDuration = 0f;
 	protected int currentCollects = 0;
 
 	private GameObject coinText;
+	private GameObject effect;
 	// Use this for initialization
 	void Awake () {
 		coinText = GameObject.Find("CoinText");
@@ -25,7 +28,10 @@ public class CollectableController : MonoBehaviour {
 		
 	}
 
-	void onTriggerEnter() {
+	void OnTriggerEnter(Collider collision) {
+		if(collision.tag == "Player") {
+			effect = Instantiate(ps, gameObject.transform);
+		}
 		//collectStartTime = Time.time;
 	}
 
@@ -41,8 +47,11 @@ public class CollectableController : MonoBehaviour {
 		}
 	}
 
-	void OnTriggerExit(){
-		collectDuration = 0f;
+	void OnTriggerExit(Collider collision){
+		if(collision.tag == "Player") {
+			collectDuration = 0f;
+			Destroy(effect);
+		}
 	}
 
 	void Collect() {
