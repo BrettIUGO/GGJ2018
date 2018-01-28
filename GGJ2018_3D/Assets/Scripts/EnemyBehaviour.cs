@@ -5,6 +5,10 @@ using UnityEngine;
 public class EnemyBehaviour : MonoBehaviour {
 
 	public float delay = 1;
+	public float minRange = 0f;
+	public float maxRange = 100f;
+
+	public GameObject spawnPoint;
 	public GameObject enemy;
 	public float time  = 0;
 	// Use this for initialization
@@ -21,6 +25,6 @@ public class EnemyBehaviour : MonoBehaviour {
 	}
 
 	void Spawn(){
-		Instantiate (enemy, new Vector3 (Random.Range (10, 100), 3, Random.Range(10,100)), Quaternion.identity);
+		Instantiate (enemy, spawnPoint.transform.position + new Vector3 (Random.Range (minRange, maxRange), 3, Random.Range(minRange,maxRange)), Quaternion.identity);
 	}
 }
