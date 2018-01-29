@@ -212,6 +212,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c24d8b6a2c078d848a5afe76e5c363ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprintEnergy: 100
+  maxSprintEnergy: 100
+  sprintModifier: 0.6
+  sprintConsumptionRate: 100
+  sprintRecoveryRate: 25
 --- !u!114 &114402089707172222
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -253,6 +258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f468b0d35aa1cbd4798a79fc6fa78eb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotateSpeed: 100
   movementModifier: 0.15
   defaultMovementModifier: 0.15
   animator: {fileID: 95416404683126406}
@@ -296,6 +302,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a70b965067789be4bb8f8e45d316f647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathScreen: {fileID: 1180350028542866, guid: bbd0fcc9433fdf441a244c8e12f3791e,
+    type: 2}
+  hudCanvas: {fileID: 0}
   InjurySounds:
   - {fileID: 8300000, guid: 8c1a16dd60ad4c241894110dd4928f47, type: 3}
   - {fileID: 8300000, guid: a729551b55e57e14695ddde2a793f82f, type: 3}

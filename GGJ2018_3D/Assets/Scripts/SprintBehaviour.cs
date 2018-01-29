@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class SprintBehaviour : MonoBehaviour {
 
-	float sprintEnergy = 100f;
-	float maxSprintEnergy = 100f;
-	float sprintModifier = .6f;
-	float sprintConsumptionRate = 1.6f;
-	float sprintRecoveraryRate = 0.4f;
+	public float sprintEnergy = 100f;
+	public float maxSprintEnergy = 100f;
+	public float sprintModifier = .6f;
+	public float sprintConsumptionRate = 50f;
+	public float sprintRecoveryRate = 25f;
 	MovementController movementController;
 
 	// Use this for initialization
@@ -23,11 +23,11 @@ public class SprintBehaviour : MonoBehaviour {
 
 		if ((Input.GetKey (KeyCode.LeftShift) || Input.GetAxis ("Sprint") > 0) && sprintEnergy > 0) {
 			movementController.movementModifier = sprintModifier;
-			sprintEnergy-= sprintConsumptionRate;
+			sprintEnergy -= sprintConsumptionRate * Time.deltaTime;
 		} else {
 			movementController.movementModifier = movementController.defaultMovementModifier;
 			if (sprintEnergy < maxSprintEnergy) {
-				sprintEnergy+= sprintRecoveraryRate;
+				sprintEnergy += sprintRecoveryRate * Time.deltaTime;
 			}
 		}
 
